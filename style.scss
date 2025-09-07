@@ -1,0 +1,104 @@
+// style.scss
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$header-bg: #222;
+$footer-bg: #333;
+$text-color: #fff;
+$link-color: #e67e22;
+$font-size-base: 16px;
+$font-size-lg: 20px;
+$font-size-sm: 14px;
+$margin-base: 16px;
+$margin-lg: 32px;
+$margin-sm: 8px;
+
+// Mixin para enlaces de navegación
+@mixin nav-link {
+  color: $link-color;
+  text-decoration: none;
+  font-weight: bold;
+  padding: $margin-sm $margin-base;
+  border-radius: 4px;
+  transition: background 0.2s;
+  &:hover {
+    background: lighten($link-color, 35%);
+    color: $header-bg;
+  }
+}
+
+// Mixin para botones
+@mixin button($bg, $size) {
+  background: $bg;
+  color: $text-color;
+  border: none;
+  border-radius: 6px;
+  font-size: $size;
+  padding: $margin-sm $margin-base;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background 0.2s, transform 0.2s;
+  &:hover {
+    background: darken($bg, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+// Header con anidación
+header {
+  background: $header-bg;
+  color: $text-color;
+  padding: $margin-lg 0 $margin-base 0;
+  text-align: center;
+  h1 {
+    font-size: $font-size-lg;
+    margin-bottom: $margin-base;
+  }
+  nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      li {
+        margin: 0 $margin-sm;
+        a {
+          @include nav-link;
+        }
+      }
+    }
+  }
+}
+
+// Botón reutilizable
+.btn {
+  @include button($primary-color, $font-size-base);
+}
+
+// Footer
+footer {
+  background: $footer-bg;
+  color: $text-color;
+  text-align: center;
+  padding: $margin-base 0;
+  font-size: $font-size-sm;
+}
+
+// Otros estilos básicos
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: $font-size-base;
+  margin: 0;
+  background: #f4f4f4;
+  color: #222;
+}
+
+main {
+  margin: $margin-lg auto;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: $margin-lg;
+}
